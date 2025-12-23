@@ -36,12 +36,15 @@ class LevelsContainer extends StatelessWidget {
             color: isLocked ? Colors.grey : Colors.amber,
           ),
         ),
+
         Positioned(
           bottom: 30,
           child: ClipPath(
             clipper: CustomContainerLevels(),
             child: Container(
               decoration: BoxDecoration(
+                // color: Colors.deepPurple,
+
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -74,11 +77,15 @@ class LevelsContainer extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+
                 ],
+
               ),
+
             ),
           ),
         ),
+
         if (isLocked)
           Positioned(
             top: 110,
@@ -93,11 +100,11 @@ class CustomContainerLevels extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = Path();
-    path.moveTo(size.width * 0.5, 0); // Top center
-    path.lineTo(size.width, size.height * 0.4); // Right shoulder
-    path.lineTo(size.width * 0.8, size.height); // Bottom right
-    path.lineTo(size.width * 0.2, size.height); // Bottom left
-    path.lineTo(0, size.height * 0.4); // Left shoulder
+    path.moveTo(size.width * 0.5, 0);
+    path.lineTo(size.width, size.height * 0.4);
+    path.lineTo(size.width * 0.8, size.height);
+    path.lineTo(size.width * 0.2, size.height);
+    path.lineTo(0, size.height * 0.4);
     path.close();
 
     return path;
