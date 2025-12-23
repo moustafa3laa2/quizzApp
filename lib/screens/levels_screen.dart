@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:quizz_app/widgets/levels_container.dart';
 
-class LevelsScreen extends StatelessWidget {
+class LevelsScreen extends StatefulWidget {
   const LevelsScreen({super.key});
 
+  @override
+  State<LevelsScreen> createState() => _LevelsScreenState();
+}
+
+class _LevelsScreenState extends State<LevelsScreen> {
+  List<Color>colors=[
+    Color(0xff8d6dfd).withValues(alpha: .8),
+    Color(0xff1b93fe).withValues(alpha: .8),
+    Color(0xfff48837).withValues(alpha: .8),
+    Color(0xff2cd3b0).withValues(alpha: .8),
+    Color(0xfffc35a9).withValues(alpha: .8),
+    Color(0xfffc35a9).withValues(alpha: .8),
+
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +56,7 @@ class LevelsScreen extends StatelessWidget {
         itemCount: 6,
 
         itemBuilder: (BuildContext context, int index) {
-          return LevelsContainer(level: index+1,isLocked: index==5,);
+          return LevelsContainer(level: index+1,isLocked: index==5,color: colors[index],);
         },
       )
     );

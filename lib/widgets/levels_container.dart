@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class LevelsContainer extends StatelessWidget {
-  const LevelsContainer({super.key, required this.level, this.isLocked = true});
+  const LevelsContainer({super.key, required this.level, this.isLocked = true, required this.color});
   final int level;
   final bool isLocked;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -36,25 +37,32 @@ class LevelsContainer extends StatelessWidget {
             color: isLocked ? Colors.grey : Colors.amber,
           ),
         ),
-
+        Positioned(top: 100, left: 40, child: CircleAvatar(radius: 25)),
+        Positioned(
+          bottom: 40,
+          left: 95,
+          child: CircleAvatar(
+            radius: 25,
+            backgroundColor: Colors.white.withValues(alpha: 0.5),
+          ),
+        ),
         Positioned(
           bottom: 30,
           child: ClipPath(
             clipper: CustomContainerLevels(),
             child: Container(
               decoration: BoxDecoration(
-                // color: Colors.deepPurple,
-
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: isLocked
-                      ? [Colors.grey, Colors.grey.withValues(alpha: .5)]
-                      : [
-                          Colors.deepPurple,
-                          Colors.lightBlue.withValues(alpha: .1),
-                        ],
-                ),
+                color: isLocked?Colors.grey:color,
+                // gradient: LinearGradient(
+                //   begin: Alignment.topLeft,
+                //   end: Alignment.bottomRight,
+                //   colors: isLocked
+                //       ? [Colors.grey, Colors.grey.withValues(alpha: .5)]
+                //       : [
+                //           color1,
+                //           color2.withValues(alpha: .1),
+                //         ],
+                // ),
               ),
               height: 150,
               width: 150,
@@ -77,11 +85,8 @@ class LevelsContainer extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
                 ],
-
               ),
-
             ),
           ),
         ),
